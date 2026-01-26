@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Thiago Prata | Método TP - Consultoria fitness premium com estratégia individualizada para resultados reais.">
+    <meta name="keywords" content="fitness, consultoria premium, thiago prata, treinamento, musculação">
+    <title>Thiago Prata | Método TP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary: #00a2ff;
+            /* Azul Elétrico Vibrante */
+            --primary-glow: rgba(0, 162, 255, 0.4);
+            --bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+            --text-dim: #a1a1a1;
+            --glass: rgba(10, 10, 10, 0.7);
+            --selection: rgba(0, 162, 255, 0.3);
+            --gold: #ffcc00;
+        }
+
+        ::selection {
+            background: var(--selection);
+            color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Typography & Layout Helpers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+
+        /* Header */
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: var(--glass);
+            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            font-size: 1.6rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .btn-whatsapp-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-whatsapp-header img {
+            width: 25px;
+        }
+
+        .btn-whatsapp-header:hover {
+            background: #25d366;
+            border-color: #25d366;
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop') center/cover;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .tagline {
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 12vw, 6rem);
+            font-weight: 900;
+            margin: 10px 0;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        .accent {
+            color: var(--primary);
+            text-shadow: 0 0 40px var(--primary-glow);
+        }
+
+        .hero p {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .cta-primary {
+            background: var(--primary);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 12px;
+            transition: 0.4s;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--primary-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Intro Box */
+        .intro-box {
+            background: var(--card-bg);
+            padding: 60px 40px;
+            border-radius: 30px;
+            border: 1px solid var(--card-border);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: var(--text-dim);
+        }
+
+        .intro-text strong {
+            color: white;
+        }
+
+        /* Problem Cards */
+        .problem-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .problem-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            flex: 1;
+            min-width: 280px;
+            transition: 0.4s;
+        }
+
+        .problem-card i {
+            font-size: 2.5rem;
+            color: #ff3333;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .problem-card p {
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .warning-banner {
+            background: rgba(255, 51, 51, 0.1);
+            border: 1px solid #ff3333;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #ff3333;
+            font-weight: bold;
+        }
+
+        /* Solution Box */
+        .solution-box {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(0, 0, 0, 1));
+            padding: 100px 50px;
+            border-radius: 40px;
+            border: 1px solid var(--primary-glow);
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .solution-box h2 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+
+        .solution-focus {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .solution-focus span {
+            display: block;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-top: 10px;
+        }
+
+        /* Steps Grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            position: relative;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .step-num {
+            font-size: 3rem;
+            font-weight: 900;
+            opacity: 0.1;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        /* Deliverables */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .deliv-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .deliv-card i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Why Box */
+        .why-box {
+            background: var(--primary);
+            color: white;
+            padding: 80px 40px;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        .why-box h3 {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+
+        .pillars-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .pillar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pillar i {
+            font-size: 3rem;
+        }
+
+        .pillar span {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Audience Split */
+        .audience-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .audience-card {
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid var(--card-border);
+        }
+
+        .audience-card.match {
+            background: rgba(37, 211, 102, 0.05);
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .audience-card.no-match {
+            background: rgba(255, 51, 51, 0.05);
+            border-color: rgba(255, 51, 51, 0.2);
+        }
+
+        .audience-card ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .audience-card li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .audience-card.match i {
+            color: #25d366;
+        }
+
+        .audience-card.no-match i {
+            color: #ff3333;
+        }
+
+        /* Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            padding: 50px 30px;
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            position: relative;
+            text-align: center;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .plan-card.featured {
+            border-color: var(--primary);
+            background: rgba(0, 162, 255, 0.05);
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured-gold {
+            border-color: var(--gold);
+            background: rgba(255, 204, 0, 0.02);
+        }
+
+        .popular {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .popular.gold {
+            background: var(--gold);
+            color: black;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 30px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .btn-plan {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-top: auto;
+            transition: 0.3s;
+        }
+
+        .btn-plan:hover {
+            filter: brightness(0.8);
+        }
+
+        .featured .btn-plan {
+            background: var(--primary);
+            color: white;
+        }
+
+        .featured-gold .btn-plan {
+            background: var(--gold);
+            color: black;
+        }
+
+        .payment-info {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .vagas-info {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--text-dim);
+        }
+
+        /* Final CTA */
+        .cta-box {
+            background: linear-gradient(90deg, #000, #111);
+            padding: 80px 40px;
+            border-radius: 40px;
+            border: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .pulse {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 5%;
+            background: #000;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-desc {
+            color: var(--text-dim);
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .audience-split {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .container {
+                padding: 60px 20px;
+            }
+
+            .plan-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">THIAGO<span>PRATA</span></a>
+        <nav>
+            <a href="https://api.whatsapp.com/send?phone=5581989511350" class="btn-whatsapp-header" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            </a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="tagline">CONSULTORIA PREMIUM</span>
+                <h1>MÉTODO <span class="accent">TP</span></h1>
+                <p>Treine com estratégia. Evolua com método. Tenha resultados reais.</p>
+                <div class="hero-ctas">
+                    <a href="#planos" class="cta-primary">VER PLANOS DISPONÍVEIS</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-box">
+                    <p class="intro-text">
+                        Se você já treina ou quer começar, mas sente que <strong>está parado no mesmo físico</strong>,
+                        não sabe se está treinado certo ou se <strong>falta estratégia e acompanhamento</strong>,
+                        esta consultoria foi criada para você.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="problem-section">
+            <div class="container">
+                <span class="section-tag">POR QUE VOCÊ NÃO EVOLUI?</span>
+                <h2 class="section-title">O PROBLEMA DA MAIORIA</h2>
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <i class="ph ph-x"></i>
+                        <h3>Treinos Genéricos</h3>
+                        <p>Segue as fichas padrões da academia que não consideram sua individualidade.</p>
+                    </div>
+                    <div class="problem-card">
+                        <i class="ph ph-x"></i>
+                        <h3>Sem Periodização</h3>
+                        <p>Treina sem um planejamento de carga e volume ao longo do tempo.</p>
+                    </div>
+                    <div class="problem-card">
+                        <i class="ph ph-x"></i>
+                        <h3>Sem Correção</h3>
+                        <p>Ninguém olha sua técnica, o que gera estagnação e risco de lesões.</p>
+                    </div>
+                </div>
+                <div class="warning-banner">
+                    <i class="ph ph-warning"></i>
+                    <span>Isso gera estagnação, frustração e possíveis lesões.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section">
+            <div class="container">
+                <div class="solution-box">
+                    <span class="highlight">A SOLUÇÃO</span>
+                    <h2>MÉTODO TP – TRANSFORMAÇÃO & PERFORMANCE</h2>
+                    <p>A Consultoria Online Método TP é um acompanhamento totalmente personalizado, focado em resultado
+                        real, mesmo à distância.</p>
+                    <div class="solution-focus">
+                        <p>Aqui você não recebe treino pronto. <span>Você recebe estratégia individual.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <span class="section-tag">NA PRÁTICA</span>
+                <h2 class="section-title">COMO FUNCIONA</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-num">01</div>
+                        <h3>Análise Completa</h3>
+                        <p>Avaliamos seu objetivo, rotina, histórico e limitações através de uma anamnese detalhada.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">02</div>
+                        <h3>Montagem Exclusiva</h3>
+                        <p>Seu treino é criado do zero, pensado exclusivamente na sua realidade e equipamento
+                            disponível.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">03</div>
+                        <h3>Periodização Mensal</h3>
+                        <p>Planejamento estratégico de treinos para acelerar seus resultados mês após mês.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">04</div>
+                        <h3>Acompanhamento</h3>
+                        <p>Ajustes constantes conforme sua evolução. Tudo baseado em método, não achismo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="deliverables-section">
+            <div class="container">
+                <h2 class="section-title">O QUE VOCÊ RECEBE</h2>
+                <div class="deliverables-grid">
+                    <div class="deliv-card">
+                        <i class="ph ph-barbell"></i>
+                        <p>Treino personalizado conforme seu nível e objetivo</p>
+                    </div>
+                    <div class="deliv-card">
+                        <i class="ph ph-calendar-check"></i>
+                        <p>Periodização mensal estratégica</p>
+                    </div>
+                    <div class="deliv-card">
+                        <i class="ph ph-device-mobile"></i>
+                        <p>Acesso a dois aplicativos exclusivos (instruções e registros)</p>
+                    </div>
+                    <div class="deliv-card">
+                        <i class="ph ph-chats-teardrop"></i>
+                        <p>Suporte diário para dúvidas e ajustes</p>
+                    </div>
+                    <div class="deliv-card">
+                        <i class="ph ph-video-camera"></i>
+                        <p>Correção de técnica por vídeo constante</p>
+                    </div>
+                    <div class="deliv-card">
+                        <i class="ph ph-chart-line-up"></i>
+                        <p>Avaliação mensal com fotos e análise postural</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-works">
+            <div class="container">
+                <div class="why-box">
+                    <h3>POR QUE O MÉTODO FUNCIONA?</h3>
+                    <div class="pillars-grid">
+                        <div class="pillar">
+                            <i class="ph ph-fingerprint"></i>
+                            <span>Individualização</span>
+                        </div>
+                        <div class="pillar">
+                            <i class="ph ph-trend-up"></i>
+                            <span>Progressão Planejada</span>
+                        </div>
+                        <div class="pillar">
+                            <i class="ph ph-target"></i>
+                            <span>Correção Técnica</span>
+                        </div>
+                        <div class="pillar">
+                            <i class="ph ph-hands-clapping"></i>
+                            <span>Acompanhamento</span>
+                        </div>
+                    </div>
+                    <p class="final-focus">Você não treina sozinho. <strong>Você treina com direção.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="audience-section">
+            <div class="container">
+                <h2 class="section-title">PARA QUEM É?</h2>
+                <div class="audience-split">
+                    <div class="audience-card match">
+                        <h3>É PRA VOCÊ SE...</h3>
+                        <ul>
+                            <li><i class="ph ph-check-circle"></i> Quer emagrecer com estratégia</li>
+                            <li><i class="ph ph-check-circle"></i> Busca hipertrofia real</li>
+                            <li><i class="ph ph-check-circle"></i> Quer sair do improviso</li>
+                            <li><i class="ph ph-check-circle"></i> Aceita orientação profissional</li>
+                        </ul>
+                    </div>
+                    <div class="audience-card no-match">
+                        <h3>NÃO É PRA VOCÊ SE...</h3>
+                        <ul>
+                            <li><i class="ph ph-x-circle"></i> Busca milagre de curto prazo</li>
+                            <li><i class="ph ph-x-circle"></i> Não segue orientações</li>
+                            <li><i class="ph ph-x-circle"></i> Quer algo genérico</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="planos" class="plans-section">
+            <div class="container">
+                <span class="section-tag">INVESTIMENTO</span>
+                <h2 class="section-title">PLANOS DE ACOMPANHAMENTO</h2>
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <h3>Mensal</h3>
+                        <div class="price"><span>R$</span> 119,90</div>
+                        <a href="https://api.whatsapp.com/send?phone=5581989511350" class="btn-plan">ASSINAR AGORA</a>
+                    </div>
+
+                    <div class="plan-card featured">
+                        <div class="popular">RECOMENDADO</div>
+                        <h3>Trimestral</h3>
+                        <div class="price"><span>R$</span> 269,90</div>
+                        <a href="https://api.whatsapp.com/send?phone=5581989511350" class="btn-plan">ASSINAR AGORA</a>
+                    </div>
+
+                    <div class="plan-card">
+                        <h3>Semestral</h3>
+                        <div class="price"><span>R$</span> 479,90</div>
+                        <a href="https://api.whatsapp.com/send?phone=5581989511350" class="btn-plan">ASSINAR AGORA</a>
+                    </div>
+
+                    <div class="plan-card featured-gold">
+                        <div class="popular gold">MELHOR CUSTO-BENEFÍCIO</div>
+                        <h3>Anual</h3>
+                        <div class="price"><span>R$</span> 839,90</div>
+                        <a href="https://api.whatsapp.com/send?phone=5581989511350" class="btn-plan">ASSINAR AGORA</a>
+                    </div>
+                </div>
+                <p class="payment-info">(Valores à vista. Pix recomendado.)</p>
+                <p class="vagas-info">🔒 Vagas limitadas para garantir qualidade no acompanhamento.</p>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>COMECE AGORA</h2>
+                    <p>Treine com inteligência. Tenha acompanhamento real. Evolua semana após semana.</p>
+                    <a href="https://api.whatsapp.com/send?phone=5581989511350" class="cta-primary pulse">QUERO ENTRAR
+                        NA CONSULTORIA AGORA</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="logo">THIAGO<span>PRATA</span></div>
+        <p class="footer-desc">Transformando vidas através do treinamento de força estratégico e individualizado.</p>
+        <div class="social-links">
+        </div>
+        <p class="copyright">&copy; 2024 Thiago Prata. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
