@@ -132,11 +132,18 @@
             position: relative;
         }
 
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
-        }
+        .hero-overlay{
+        position:absolute;
+        inset:0;
+        background:
+        linear-gradient(
+        to bottom,
+rgba(0,0,0,.15) 0%,
+rgba(0,0,0,.45) 55%,
+rgba(5,5,5,.95) 100%
+);
+}
+
 
         .hero-content {
             position: relative;
@@ -623,6 +630,145 @@
                 transform: scale(1);
             }
         }
+
+/* ============================= */
+/* MOBILE FIRST RESPONSIVO REAL */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  header {
+    padding: 12px 5%;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    line-height: 1.05;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+  }
+
+  .cta-primary {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .container {
+    padding: 60px 18px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .intro-box {
+    padding: 40px 25px;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+  }
+
+  .problem-grid {
+    gap: 18px;
+  }
+
+  .problem-card {
+    padding: 28px;
+  }
+
+  .solution-box {
+    padding: 60px 25px;
+  }
+
+  .solution-box h2 {
+    font-size: 2rem;
+  }
+
+  .steps-grid {
+    gap: 20px;
+  }
+
+  .step-card {
+    padding: 28px;
+  }
+
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deliv-card {
+    padding: 22px;
+  }
+
+  .why-box {
+    padding: 60px 25px;
+  }
+
+  .pillars-grid {
+    gap: 25px;
+  }
+
+  .audience-card {
+    padding: 35px 25px;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card {
+    padding: 40px 25px;
+  }
+
+  .final-cta h2 {
+    font-size: 2.2rem;
+  }
+
+  footer {
+    padding: 60px 20px;
+  }
+}
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 420px) {
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+}
+
+
+
     </style>
 </head>
 
@@ -642,7 +788,7 @@
         <section class="hero">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <span class="tagline">CONSULTORIA PREMIUM</span>
+                <span class="tagline">CONSULTORIA ONLINE</span>
                 <h1>MÉTODO <span class="accent">TP</span></h1>
                 <p>Treine com estratégia. Evolua com método. Tenha resultados reais.</p>
                 <div class="hero-ctas">
